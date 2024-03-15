@@ -35,9 +35,9 @@ public class PermutationCheckerSolution2 {
     private  int toggleBit(int duplicateTracker, final int index) {
         int pattern = 1 << index;
         if((duplicateTracker & pattern) == 0){ //implies not set
-            duplicateTracker |= pattern;
+            duplicateTracker |= pattern; // set bit
         } else{
-            duplicateTracker ^= pattern; // set bit
+            duplicateTracker ^= pattern; // clear  bit
         }
         return duplicateTracker;
     }
