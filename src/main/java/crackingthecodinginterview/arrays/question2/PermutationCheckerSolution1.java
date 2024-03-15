@@ -1,9 +1,8 @@
 package crackingthecodinginterview.arrays.question2;
 
-import java.util.HashMap;
 import java.util.HashSet;
 
-public class PermutationCheckerSolution {
+public class PermutationCheckerSolution1 {
 
     // Time Complexity: O(n1 + n2) where
     //      n1 = length of string 1
@@ -20,7 +19,7 @@ public class PermutationCheckerSolution {
         return hset.isEmpty();
     }
 
-    public void toggleCharacterSet(final HashSet<Character> hset, final String str) {
+    private void toggleCharacterSet(final HashSet<Character> hset, final String str) {
         for(char c : str.toCharArray()) {
             if(hset.contains(c)) {
                 hset.remove(c);
@@ -30,8 +29,7 @@ public class PermutationCheckerSolution {
         }
     }
     public static void main(String[] args) {
-
-        PermutationCheckerSolution sol = new PermutationCheckerSolution();
+        PermutationCheckerSolution1 sol = new PermutationCheckerSolution1();
         System.out.println(sol.isPermutation("a", "ab")); //false
         System.out.println(sol.isPermutation("ab", "a")); //false
         System.out.println(sol.isPermutation("aba", "baa")); //true

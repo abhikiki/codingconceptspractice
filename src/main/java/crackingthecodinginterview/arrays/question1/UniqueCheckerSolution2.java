@@ -10,16 +10,15 @@ public class UniqueCheckerSolution2 {
         int lowerCaseDuplicateTracker = 0;
         int index = 0;
         for(char c : str.toCharArray()) {
-
             if(Character.isUpperCase(c)) {
                 index = c - 'A';
-                if ((upperCaseDuplicateTracker &= 1 << index) != 0) {
+                if ((upperCaseDuplicateTracker & 1 << index) != 0) {
                     return false;
                 }
                 upperCaseDuplicateTracker |= 1 << index;
             } else {
                 index = c - 'a';
-                if ((lowerCaseDuplicateTracker &= 1 << index) != 0) {
+                if ((lowerCaseDuplicateTracker & 1 << index) != 0) {
                     return false;
                 }
                 lowerCaseDuplicateTracker |= 1 << index;
@@ -29,10 +28,10 @@ public class UniqueCheckerSolution2 {
     }
 
     public static void main(String[] args) {
-        UniqueCheckerSolution1 sol = new UniqueCheckerSolution1();
+        UniqueCheckerSolution2 sol = new UniqueCheckerSolution2();
         System.out.println("a=" + sol.containsUniqueCharacter("a")); //true
         System.out.println("aa=" + sol.containsUniqueCharacter("aa")); //false
-        System.out.println("abcB=" + sol.containsUniqueCharacter("abcB"));//false
+        System.out.println("abcB=" + sol.containsUniqueCharacter("abcB"));//true
         System.out.println("abBca=" + sol.containsUniqueCharacter("abBca"));//false
     }
 }
