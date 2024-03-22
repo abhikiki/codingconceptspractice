@@ -10,7 +10,7 @@ package crackingthecodinginterview.arrays.question5;
  add and remove can be replaced with just add if we fix one string in terms caller passing bigger string as first argument
  */
 public class OneEditAwaySolution {
-    //O(n + 1) = O(n) where length of smaller string
+    //O(n + 1) = O(n) where n = length of smaller string
 
 
     public boolean isOneAway(String biggerStr, String smallerStr) {
