@@ -12,6 +12,8 @@ public class MultiStackSolution {
         this(3, 10);
     }
 
+    //Time Complexity: O(1)
+    //Space Complexity: O(stackCount * stackSize + 2*stackCount) approx O(stackCount * stackSize)
     public MultiStackSolution(int stackCount, int stackSize){
         this.stackSize = stackSize;
         this.stackCount = stackCount;
