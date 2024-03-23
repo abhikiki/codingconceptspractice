@@ -48,6 +48,7 @@ class AnimalShelterSolution{
     private LinkedList<Animal> dogs = new LinkedList<>();
     private LinkedList<Animal> cats = new LinkedList<>();
 
+    // TimeComplexity: O(1)
     public void enqueue(Animal animal){
         animal.setOrder(order++);
         if(AnimalType.DOG == animal.getType()){
@@ -57,6 +58,7 @@ class AnimalShelterSolution{
         }
     }
 
+    // TimeComplexity: O(1)
     public Animal dequeueAny(){
         if(dogs.isEmpty() && cats.isEmpty())
             throw new IllegalStateException("animal list is empty");
@@ -68,12 +70,14 @@ class AnimalShelterSolution{
         return dogs.peek().getOrder() < cats.peek().getOrder() ? dogs.removeFirst() : cats.removeFirst();
     }
 
+    // TimeComplexity: O(1)
     public Animal dequeueDog(){
         if(dogs.isEmpty())
             throw new IllegalStateException("Dog list is empty");
         return dogs.removeFirst();
     }
 
+    // TimeComplexity: O(1)
     public Animal dequeueCat(){
         if(dogs.isEmpty())
             throw new IllegalStateException("Cat list is empty");
@@ -88,6 +92,7 @@ class AnimalShelterSolution{
         Animal c2 = new Animal("CAT4", AnimalType.CAT);
         Animal d3 = new Animal("DOG5", AnimalType.DOG);
         Animal c3 = new Animal("CAT6", AnimalType.CAT);
+
         sol.enqueue(d1);
         sol.enqueue(c1);
         sol.enqueue(d2);
