@@ -16,18 +16,6 @@ public class PathSumSolution1 {
       return allPaths;
     }
 
-//    private void pathSum(Node root, int target,  int currentSum, ArrayList<Node> currentPath){
-//        if(root == null)
-//            return;
-//        currentPath.add(root);
-//        currentSum += root.data;
-//        if(currentSum == target)
-//            allPaths.add((ArrayList<Node>) currentPath.clone());
-//        pathSum(root.left, target, currentSum, currentPath);
-//        pathSum(root.right, target, currentSum, currentPath);
-//        currentPath.remove(root);
-//    }
-
     private void pathSum(Node root, int target,  int currentSum, ArrayList<Node> currentPath){
         if(root == null)
             return;

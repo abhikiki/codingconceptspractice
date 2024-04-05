@@ -12,10 +12,10 @@ class Node{
     }
 }
 public class BuildOrderSolution {
-    HashMap<Character, Node> projectToNodeMap = new HashMap<>();
+    private HashMap<Character, Node> projectToNodeMap = new HashMap<>();
     //Adjacency List
-    HashMap<Character, ArrayList<Node>> adjList = new HashMap<>();
-    ArrayList<Character> projectOrderList = new ArrayList<>();
+    private HashMap<Character, ArrayList<Node>> adjList = new HashMap<>();
+    private ArrayList<Character> projectOrderList = new ArrayList<>();
 
     boolean isCycle = false;
 
@@ -27,6 +27,7 @@ public class BuildOrderSolution {
             throw new IllegalArgumentException("Invalid Input");
 
         buildGraph(projects, dependencies);
+
         for(Character project : projects){
             buildProjectOrder(projectToNodeMap.get(project));
             adjList.get(project).clear();

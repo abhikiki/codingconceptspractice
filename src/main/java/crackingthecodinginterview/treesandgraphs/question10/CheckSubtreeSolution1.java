@@ -1,5 +1,7 @@
 package crackingthecodinginterview.treesandgraphs.question10;
 
+import java.util.LinkedList;
+
 class Node{
     int data;
     Node left;
@@ -17,7 +19,7 @@ public class CheckSubtreeSolution1 {
     // k = no. of occurrences of t2 in t1
     //M = total nodes in t2
     public boolean containsTree(Node t1, Node t2){
-        if(t1 == null)
+        if(t2 == null)
             return true;
         return isSubTree(t1, t2);
     }

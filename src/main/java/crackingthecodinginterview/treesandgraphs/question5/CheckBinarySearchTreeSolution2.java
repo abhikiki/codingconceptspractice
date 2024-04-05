@@ -7,6 +7,7 @@ public class CheckBinarySearchTreeSolution2 {
     //Time Complexity: O(N)
     //Space Complexity: O(H) where H = height of the tree
     //In BST inorder traverse tree in ascending order
+
     public boolean checkBST(Node n){
         if(n == null)
             return true;
@@ -35,5 +36,4 @@ public class CheckBinarySearchTreeSolution2 {
         CheckBinarySearchTreeSolution2 sol = new CheckBinarySearchTreeSolution2();
         System.out.println(sol.checkBST(n30));
     }
-
 }
