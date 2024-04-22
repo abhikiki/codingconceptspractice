@@ -17,7 +17,7 @@ public class PermutationWithoutDuplicatesSolution {
     }
 
     //Space Complexity: O(N) where N=length of the given string
-    //Time Complexity: N *    //4 * (2 * 3) 4 * (n-1)!) = 4 * 3 * 2 * 4  $ 4 * 16
+    //Time Complexity: N * N!    //4 * (2 * 3) 4 * (n-1)!) = 4 * 3 * 2 * 4  $ 4 * 16
     // 4 = 64  n * (n-1)! = 5* 4! = 5 * 4.3.2 =
     // 5 = 325 5.4.3.2= 60 * 5 = 300
     private void permutationWithoutDuplicatesHelper(String str, String prefix, HashSet<String> results) {

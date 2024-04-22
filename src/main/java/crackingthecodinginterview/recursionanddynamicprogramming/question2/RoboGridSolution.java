@@ -5,7 +5,6 @@ import java.util.LinkedList;
 import java.util.Objects;
 
 class Cell {
-
     int row;
     int col;
 
