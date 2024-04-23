@@ -1,5 +1,7 @@
 package crackingthecodinginterview.recursionanddynamicprogramming.question11;
 
+import java.util.Arrays;
+
 public class CoinWaysSolution {
 
 
@@ -54,27 +56,23 @@ public class CoinWaysSolution {
         return ways;
     }
 
-    public int dpSolution(int n){
-        int[] dp = new int[n];
+    public int dpSolution(int sum){
+        int[] dp = new int[sum+1];
         dp[0]=1;
-        for(int i=1; i<n ;i++){
-            for(int j=0; j<demons.length - 1; j++){
-                if(i - demons[j] >=0){
-                    dp[i] += dp[i-demons[j]];
+        for(int j=0; j<demons.length; j++) {
+            for (int i = 0; i <= sum; i++) {
+                if (i - demons[j] >= 0) {
+                    dp[i] += dp[i - demons[j]];
                 }
             }
         }
-        return dp[n-1];
-    }
-    // 6 5 2, 1
 
-//    7
-//
-//    7 (6,5,2)
-//            7(6,5)
+        return dp[sum];
+    }
+
     public static void main(String[] args) {
-        System.out.println(new CoinWaysSolution().coinWays(4));
-        System.out.println(new CoinWaysSolution().makeChange(4));
-        System.out.println(new CoinWaysSolution().dpSolution(4));
+        System.out.println(new CoinWaysSolution().coinWays(26));
+        System.out.println(new CoinWaysSolution().makeChange(26));
+        System.out.println(new CoinWaysSolution().dpSolution(26));
     }
 }

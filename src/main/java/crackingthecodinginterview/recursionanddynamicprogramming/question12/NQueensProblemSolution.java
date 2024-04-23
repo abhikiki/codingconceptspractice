@@ -4,66 +4,54 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class NQueensProblemSolution {
+    /**
+     * Eight Queens: Write an algorithm to print all ways of arranging eight queens on an 8x8 chess board so that none of them share the same row, column, or diagonal. In this case, "diagonal" means all diagonals, not just the two that bisect the board.
+     */
 
-    public ArrayList<Integer[]> placeNQueens(int n){
-        return placeNQueens(n,n);
+    // Startingor row 0, place queen in valid positions starting from 0-N-1
+    // When we place queen in all rows, we have a solution.
+
+
+
+    public ArrayList<Integer[]> placeNQueens(int queensCount){
+        ArrayList<Integer[]> results = new ArrayList<>();
+        Integer[] currentResult = new Integer[queensCount];
+        Arrays.fill(currentResult, -1);
+        placeNQueensHelper(0, currentResult, queensCount, results);
+        return results;
+
     }
 
-    // n queens, n*n grid
-    public ArrayList<Integer[]> placeNQueens(int n, int gridSize){
-        if(n < 0){
-            ArrayList<Integer[]> result = new ArrayList<>();
-            Integer[] emptyResult = new Integer[gridSize];
-            result.add(emptyResult);
-            return result;
+    private void placeNQueensHelper(int currentRow, Integer[] currentResult, int queensCount, ArrayList<Integer[]> results){
+        if(currentRow == queensCount){
+            results.add(currentResult.clone());
+            return;
         }
-        ArrayList<Integer[]> finalResult = new ArrayList<>();
-        ArrayList<Integer[]> prevResult = placeNQueens(n - 1, gridSize);
-        for(Integer[] currentRow : prevResult){
-            Integer[] currentResult = placeCurrentQueen(currentRow, n);
-            finalResult.add(currentResult);
-
-        }
-        return finalResult;
-    }
-
-    //arr[r0] = 3
-    //arr[r1] = 2
-    //arr[r2] = 0
-    //arr[r3] = 1
-    private Integer[] placeCurrentQueen(Integer[] rowColResult, int currentQueen){
-        //currentCol
-        //currentRow
-        //queenROw
-        //queenCol
-        int queenRow = currentQueen - 1;
-        for(int row=0; row < rowColResult.length; row++){
-            Integer currentCol = rowColResult[row];
-            if(currentCol != null){
-                for(int col=0; col < currentCol; col++){
-                    if(currentCol == col){
-                        continue;
-                    }
-                    if(Math.abs(currentCol - col) == Math.abs(row - queenRow)){
-                        continue;
-                    }
-                    rowColResult[row] = col;
-                    break;
-                }
+        for(int currentCol=0; currentCol < queensCount; currentCol++){
+            if(isValidQueenPosition(currentResult, currentRow, currentCol)){
+                currentResult[currentRow]=currentCol;
+                placeNQueensHelper(currentRow + 1, currentResult, queensCount, results);
+                currentResult[currentRow]=-1;
             }
         }
-
-        return rowColResult;
     }
 
-
+    private boolean isValidQueenPosition(Integer[] currentResult, int currentRow, int currentCol){
+        for(int prevRow=0; prevRow<currentRow; prevRow++){
+            int prevCol=currentResult[prevRow];
+            if(prevCol == currentCol)
+                return false;
+            if(Math.abs(currentRow - prevRow) == Math.abs(currentCol - prevCol))
+                return false;
+        }
+        return true;
+    }
     public static void main(String[] args) {
-        ArrayList<Integer[]> results = new NQueensProblemSolution().placeNQueens(4);
-        for(Integer[] result : results){
-            for(Integer r : result){
-                System.out.print(r + " ");
-            }
+        ArrayList<Integer[]> results = new NQueensProblemSolution().placeNQueens(8);
+        for (Integer[] result : results) {
             System.out.println();
+            for(int i=0; i< result.length; i++)
+            System.out.print(result[i] + " ");
         }
     }
 }
